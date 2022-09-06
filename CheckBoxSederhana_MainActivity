@@ -1,0 +1,82 @@
+package com.example.checkboxsederhana;
+
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private CheckBox checkBox,checkBox2,checkBox3;
+    private TextView pilihan1,pilihan2,pilihan3;
+    private String menu1,menu2,menu3;
+    private Button button;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        checkBox= findViewById(R.id.checkBox);
+        checkBox2= findViewById(R.id.checkBox2);
+        checkBox3= findViewById(R.id.checkBox3);
+        pilihan1= findViewById(R.id.textView3);
+        pilihan2= findViewById(R.id.textView4);
+        pilihan3= findViewById(R.id.textView5);
+        button= findViewById(R.id.buttons);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (checkBox.isChecked()){
+                    menu1="Ayam geprek";
+
+                }
+
+                else if (!checkBox.isChecked()){
+                    menu1="";
+                }
+
+                if (checkBox2.isChecked()){
+                    menu2="Ayam Bakar";
+
+                }
+
+                else if (!checkBox2.isChecked()){
+                    menu2="";
+                }
+
+                if (checkBox3.isChecked()){
+                    menu3="Soto Ayam";
+
+                }
+
+
+
+                else if (!checkBox3.isChecked()){
+                    menu3="";
+                }
+
+                if (!checkBox.isChecked() && !checkBox2.isChecked() && !checkBox3.isChecked()) {
+                    Toast.makeText(getApplicationContext(), "tidak ada menu yang dipesan", Toast.LENGTH_SHORT).show();
+                }
+
+                else {
+                    Toast.makeText(getApplicationContext(), "pesan terkirim", Toast.LENGTH_SHORT).show();
+                    pilihan1.setText("menu 1 : "+menu1);
+                    pilihan2.setText("menu 2 : "+menu2);
+                    pilihan3.setText("menu 3 : "+menu3);
+                }
+
+            }
+        });
+
+
+
+    }
+}
